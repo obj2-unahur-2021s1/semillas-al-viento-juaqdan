@@ -60,22 +60,24 @@ class SemillaTest : DescribeSpec({
             parcela.cantidadMaximaPlantas().shouldBe(5)
             parcelaGrande.cantidadMaximaPlantas().shouldBe(40)
         }
-      /*  it ("Tiene complicaciones?") {
+        it ("Tiene complicaciones?") {
             parcela.plantar(sojaNormal)
-            parcelaGrande.plantar(menta)
+            parcelaGrande.plantar(sojaTransgenica)
 
-            parcela.tieneComplicaciones().shoulBeTrue()
-            parcelaGrande.tieneComplicaciones().shoulBeFalse()
-        } */
+            parcela.tieneComplicaciones().shouldBeTrue()
+            parcelaGrande.tieneComplicaciones().shouldBeFalse()
+        }
 
         it ("Plantar") {
             parcela.plantar(sojaNormal)
             parcela.plantar(sojaTransgenica)
             parcela.plantar(menta)
             parcela.plantar(mentaGrande)
+            parcela.plantar(mentaGrande)
 
+            shouldThrowAny { parcela.plantar(mentaGrande) }
 
-          // shouldThrowAny { parcela.plantar(mentaGrande) }
+            shouldThrowAny { parcelaGrande.plantar(menta) }
         }
     }
 
@@ -100,10 +102,9 @@ class SemillaTest : DescribeSpec({
             agricultora3.plantarEstrategicamente(Soja(2018, 0.5f))
             agricultora3.plantarEstrategicamente(Soja(2018, 0.5f))
             agricultora3.plantarEstrategicamente(Soja(2018, 0.5f))
-            agricultora3.plantarEstrategicamente(Soja(2018, 0.5f))
 
-            //shouldThrowAny { agricultora3.plantarEstrategicamente(Soja(2018, 0.5f)) }
+
+            shouldThrowAny { agricultora3.plantarEstrategicamente(Soja(2018, 0.5f)) }
         }
     }
-
 })
