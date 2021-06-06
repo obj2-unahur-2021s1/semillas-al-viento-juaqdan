@@ -7,6 +7,7 @@ class Parcela(val ancho: Int, val largo: Int, val horasSolPorDia: Int) {
   val plantas = mutableListOf<Planta>()
   var cantidadPlantas = 0
 
+
   fun superficie() = ancho * largo
   fun cantidadMaximaPlantas() =
     /*REDUNDANCIA MINIMA - estamos haciendo una operacion (ancho * largo) que ya tenemos hecha en otra funcion reutilizable (superficie)*/

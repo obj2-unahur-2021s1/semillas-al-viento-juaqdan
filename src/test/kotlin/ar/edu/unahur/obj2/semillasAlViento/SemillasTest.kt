@@ -79,4 +79,31 @@ class SemillaTest : DescribeSpec({
         }
     }
 
+    describe("agricultoras") {
+        parcela.plantar(mentaGrande)
+        parcelaGrande.plantar(sojaTransgenica)
+        val agricultora = Agricultora(mutableListOf<Parcela>(parcela, parcelaGrande))
+        val agricultora2 = Agricultora(mutableListOf<Parcela>(parcela, parcela))
+
+        val parcelaComun = Parcela(15, 1, 5)
+        val agricultora3 = Agricultora(mutableListOf<Parcela>(parcela, parcelaComun))
+
+        it("parcelas semilleras"){
+            agricultora.parcelasSemilleras().shouldBe(listOf(parcela))
+            agricultora2.parcelasSemilleras().shouldBe(listOf(parcela, parcela))
+        }
+        it("plantar estrategicamente"){
+            agricultora3.plantarEstrategicamente(Soja(2018, 0.5f))
+            agricultora3.plantarEstrategicamente(Soja(2018, 0.5f))
+            agricultora3.plantarEstrategicamente(Soja(2018, 0.5f))
+            agricultora3.plantarEstrategicamente(Soja(2018, 0.5f))
+            agricultora3.plantarEstrategicamente(Soja(2018, 0.5f))
+            agricultora3.plantarEstrategicamente(Soja(2018, 0.5f))
+            agricultora3.plantarEstrategicamente(Soja(2018, 0.5f))
+            agricultora3.plantarEstrategicamente(Soja(2018, 0.5f))
+
+            //shouldThrowAny { agricultora3.plantarEstrategicamente(Soja(2018, 0.5f)) }
+        }
+    }
+
 })
