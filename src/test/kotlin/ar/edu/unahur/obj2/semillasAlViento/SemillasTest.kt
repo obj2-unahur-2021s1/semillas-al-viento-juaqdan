@@ -9,8 +9,8 @@ class SemillaTest : DescribeSpec({
     val menta = Menta(2020, 0.3f)
     val mentaGrande = Menta(2020, 0.6f)
 
-    val sojaNormal = Soja(2019, 0.4f, false )
-    val sojaTransgenica = Soja(2019, 0.6f, true )
+    val sojaNormal = Soja(2019, 0.4f )
+    val sojaTransgenica = SojaTransgenica(2019, 0.6f )
 
     describe ("Plantas") {
         describe ("Horas de sol que tolera") {
@@ -39,7 +39,10 @@ class SemillaTest : DescribeSpec({
                 menta.daSemillas().shouldBeFalse()
                 mentaGrande.daSemillas().shouldBeTrue()
             }
+            it("soja"){
+                sojaNormal.daSemillas().shouldBeFalse()
+                sojaTransgenica.daSemillas().shouldBeFalse()
+            }
         }
-
     }
 })
