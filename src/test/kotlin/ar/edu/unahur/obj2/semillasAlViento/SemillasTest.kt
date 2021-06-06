@@ -1,5 +1,6 @@
 package ar.edu.unahur.obj2.semillasAlViento
 
+import io.kotest.assertions.throwables.shouldThrowAny
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
@@ -45,4 +46,37 @@ class SemillaTest : DescribeSpec({
             }
         }
     }
+
+
+    val parcela = Parcela(2, 3, 7)
+    val parcelaGrande = Parcela(20,10, 8)
+
+    describe ("Parcelas") {
+        it ("Superfice") {
+            parcela.superficie().shouldBe(6)
+            parcelaGrande.superficie().shouldBe(200)
+        }
+        it ("Plantas que tolera") {
+            parcela.cantidadMaximaPlantas().shouldBe(5)
+            parcelaGrande.cantidadMaximaPlantas().shouldBe(40)
+        }
+      /*  it ("Tiene complicaciones?") {
+            parcela.plantar(sojaNormal)
+            parcelaGrande.plantar(menta)
+
+            parcela.tieneComplicaciones().shoulBeTrue()
+            parcelaGrande.tieneComplicaciones().shoulBeFalse()
+        } */
+
+        it ("Plantar") {
+            parcela.plantar(sojaNormal)
+            parcela.plantar(sojaTransgenica)
+            parcela.plantar(menta)
+            parcela.plantar(mentaGrande)
+
+
+          // shouldThrowAny { parcela.plantar(mentaGrande) }
+        }
+    }
+
 })
